@@ -1,0 +1,16 @@
+version: "2"
+services:
+
+  gateway:
+    container_name: gateway
+    image: image/gateway
+    restart: always
+    ports:
+      - "8090:8090"
+
+  book:
+    container_name: book
+    image: image/book
+    restart: always
+    ports:
+      - "8080:8080"
