@@ -41,7 +41,7 @@ public class SimpleFilter extends ZuulFilter {
     RequestContext ctx = RequestContext.getCurrentContext();
     HttpServletRequest request = ctx.getRequest();
     RestTemplate restTemplate = new RestTemplate();
-    JSONParser jsonParser = new org.json.simple.parser.JSONParser();
+    JSONParser jsonParser = new JSONParser();
     ResponseEntity<String> responseEntity = restTemplate.getForEntity(
             "http://localhost:8070/get-name", String.class
     );
