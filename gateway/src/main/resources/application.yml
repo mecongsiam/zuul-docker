@@ -2,8 +2,8 @@ zuul:
   routes:
     books:
     path: /books/**
-    url: 192.168.99.100:8080
+    url: localhost:8080
 ribbon:
-  listOfServers: 192.168.99.100:8080
+  listOfServers: localhost:8080
 server:
   port: 8090

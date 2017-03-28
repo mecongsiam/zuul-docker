@@ -11,5 +11,6 @@
     <modules>
       <module>book</module>
       <module>gateway</module>
+      <module>author</module>
     </modules>
 </project>

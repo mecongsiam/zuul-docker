@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class BookApplication {
+public class AuthorApplication {
 
-  @RequestMapping(value = "/available")
+  @RequestMapping(value = "/get-name")
   public String available() {
-    return "{\"name\":\"spring\"}";
+    return "{\"author\":\"james\"}";
   }
 
-  @RequestMapping(value = "/checked-out")
+  @RequestMapping(value = "/get-author")
   public String checkedOut() {
-    return "{\"name\":\"boot\"}";
+    return "{\"author\":\"james\"}";
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(BookApplication.class, args);
+    SpringApplication.run(AuthorApplication.class, args);
   }
 }
