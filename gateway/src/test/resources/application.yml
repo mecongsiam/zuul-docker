@@ -1,0 +1,9 @@
+zuul:
+  routes:
+    books:
+    path: /books/**
+    url: localhost:8080
+ribbon:
+  listOfServers: localhost:8080
+server:
+  port: 8090
