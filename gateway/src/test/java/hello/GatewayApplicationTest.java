@@ -1,10 +1,5 @@
 package hello;
 
-import com.github.tomakehurst.wiremock.client.LocalMappingBuilder;
-import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
-import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
-import com.github.tomakehurst.wiremock.standalone.MappingsLoader;
-import com.github.tomakehurst.wiremock.stubbing.StubMapping;
 import com.netflix.zuul.context.RequestContext;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -24,12 +19,12 @@ import org.springframework.web.client.RestTemplate;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @RunWith(SpringRunner.class)
-@TestPropertySource(locations = "classpath:application.properties")
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.DEFINED_PORT, classes = GatewayApplication.class)
 public class GatewayApplicationTest {
 
     @Autowired
     private TestRestTemplate rest;
+
 
     static ConfigurableApplicationContext bookService;
 
