@@ -1,5 +1,7 @@
 package hello;
 
+import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
+import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.netflix.zuul.context.RequestContext;
 import org.junit.*;
 import org.junit.runner.RunWith;

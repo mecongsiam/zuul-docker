@@ -1,12 +1,12 @@
 version: "2"
 services:
 
-  gateway:
-    container_name: gateway
-    image: image/gateway
-    restart: always
-    ports:
-      - "8090:8090"
+#  elk:
+#    build: ./elk
+#    ports:
+#      - "9200:9200"
+#      - "8200:80"
+#      - "5000:5000/udp"
 
   book:
     container_name: book
@@ -14,3 +14,36 @@ services:
     restart: always
     ports:
       - "8080:8080"
+    links:
+      - logstash
+
+  logstash:
+      build: logstash
+      command: logstash -f /config/logstash.conf
+      ports:
+        - "5000:5000"
+
+  elasticsearch:
+      build: elasticsearch
+      ports:
+        - "9200:9200"
+        - "9300:9300"
+      environment:
+        - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        - xpack.security.enabled=false
+        - xpack.monitoring.enabled=false
+        - xpack.ml.enabled=false
+        - xpack.graph.enabled=false
+        - xpack.watcher.enabled=false
+
+  kibana:
+      build: kibana
+      ports:
+        - "5601:5601"
+      environment:
+        - xpack.security.enabled=false
+        - xpack.monitoring.enabled=false
+        - xpack.ml.enabled=false
+        - xpack.graph.enabled=false
+        - xpack.watcher.enabled=false
+        - "elasticsearch.url=http://192.168.99.100:9200"
