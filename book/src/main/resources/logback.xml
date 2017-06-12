@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
-    <include resource="org/springframework/boot/logging/logback/base.xml" />
-    <appender name="UDP2LOGSTASH" class="net.logstash.logback.appender.LogstashSocketAppender">
-        <host>192.168.99.100</host>
-        <port>5000</port>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <springProperty name="appName" source="spring.application.name"/>
+
+    <appender name="TCP2LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+
+        <destination>192.168.99.100:5000</destination>
+
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"appname":"${appName}"}</customFields>
+        </encoder>
+
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="UDP2LOGSTASH"/>
+        <appender-ref ref="TCP2LOGSTASH"/>
     </root>
+
 </configuration>
